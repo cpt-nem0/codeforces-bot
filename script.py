@@ -7,7 +7,7 @@ import os
 # copy contents of templet to .cpp
 def cpp_file(src):
     file = open(src, "w")
-    with open(r'/home/cptn3m0/Desktop/codeforces/file creation script/templet.txt', "r") as templet:
+    with open('templet.txt', "r") as templet:
         file.write(templet.read())
 
     # os.system("geany {}".format(src))
