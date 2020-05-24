@@ -4,40 +4,31 @@ import sys
 import os
 
 
-# copy contents of templet to .cpp
 def cpp_file(src):
-    file = open(src, "w")
-    with open('templet.txt', "r") as templet:
-        file.write(templet.read())
+    confirm = input(
+        'Do you want to copy the contents of "templet.txt"?(Y/N): ').lower()
+    if confirm == 'y':
+        with open(src, 'w') as file, open("templet.txt", 'r') as templet:
+            file.write(templet.read())
+    else:
+        files(src)
 
-    # os.system("geany {}".format(src))
 
-
-def create_file(src):
-    file = open(src, "w+")
+def files(src):
+    file = open(src, 'w+')
     file.close()
 
 
 try:
-    # file name
-    file_name = str(sys.argv[1])
+    file_name = sys.argv[1]
     name, ext = file_name.split('.')
     file = os.getcwd() + '/' + file_name
-    # calling cpp function for templet addition and file creation
     if ext == 'cpp':
-        confirm = input('Do you want to copy templets?(y/n): ')
-        if confirm.lower() == 'y':
-            cpp_file(file)
-        else:
-            create_file(file)
-
-    # just for now
+        cpp_file(file)
     else:
-        create_file(file)
+        files(file)
 
-
-except IndexError:
-    print('File must be Enter')
-
+except (IndexError, ValueError):
+    print('Enter proper file name with extension.')
 except FileNotFoundError:
-    print("'templet.txt' not Found.")
+    print("'templet.txt' is not found.")
