@@ -8,7 +8,7 @@ def cpp_file(src):
     confirm = input(
         'Do you want to copy the contents of "templet.txt"?(Y/N): ').lower()
     if confirm == 'y':
-        with open(src, 'w') as file, open("templet.txt", 'r') as templet:
+        with open(src, 'w') as file, open("{}/templet.txt".format(os.path.dirname(__file__)), 'r') as templet:
             file.write(templet.read())
     else:
         files(src)
