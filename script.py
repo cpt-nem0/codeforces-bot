@@ -1,5 +1,6 @@
 #! /usr/bin/python3.8
 
+import subprocess
 import sys
 import os
 
@@ -20,15 +21,17 @@ def files(src):
 
 
 try:
-    file_name = sys.argv[1]
-    name, ext = file_name.split('.')
-    file = os.getcwd() + '/' + file_name
-    if ext == 'cpp':
-        cpp_file(file)
+    if len(sys.argv) == 1:
+        print('Enter proper file name with extension.')
     else:
-        files(file)
+        file_name = sys.argv[1]
+        name, ext = file_name.split('.')
+        file = os.getcwd() + '/' + file_name
+        if ext == 'cpp':
+            cpp_file(file)
+        else:
+            files(file)
+        subprocess.run(["code", "."])
 
-except (IndexError, ValueError):
-    print('Enter proper file name with extension.')
 except FileNotFoundError:
     print("'templet.txt' is not found.")
