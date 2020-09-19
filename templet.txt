@@ -13,12 +13,12 @@ using namespace std;
 #define ui unsigned int
 #define us unsigned short
 
-typedef long long			              ll;
-typedef long long int			          lli;
-typedef vector<int>			            vi;
-typedef pair<int, int>			        ii;
-typedef vector<ii>			            vii;
-typedef set<int>			              si;
+typedef long long			ll;
+typedef long long int			lli;
+typedef vector<int>			vi;
+typedef pair<int, int>			ii;
+typedef vector<ii>			vii;
+typedef set<int>			si;
 
 #define REP(i, a, b) \
 for (int i = int(a); i <= int(b); i++)
