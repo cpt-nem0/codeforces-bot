@@ -31,7 +31,7 @@ try:
             cpp_file(file)
         else:
             files(file)
-        subprocess.run(["code", "."])
+        subprocess.run("code .", shell=True)
 
 except FileNotFoundError:
     print("'templet.txt' is not found.")
